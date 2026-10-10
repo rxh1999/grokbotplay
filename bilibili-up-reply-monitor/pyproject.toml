@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bilibili-up-reply-monitor"
+version = "0.1.0"
+description = "Monitor Bilibili video comments by UP主 and push new replies via webhook"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "httpx>=0.27.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+bilibili-monitor = "bilibili_monitor.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["bilibili_monitor*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
